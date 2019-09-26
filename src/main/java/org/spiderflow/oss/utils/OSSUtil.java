@@ -8,7 +8,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.spiderflow.context.SpiderContext;
 import org.spiderflow.oss.model.Oss;
 import org.spiderflow.oss.model.OssFile;
 
@@ -114,12 +113,12 @@ public class OSSUtil {
 	    * @return void    		返回类型  
 	    * @throws
 	 */
-	public static void deleteFile(Oss oss, String key, SpiderContext context) {
+	public static void deleteFile(Oss oss, String key) {
 		OSSClient ossClient = getOSSClient(oss);
 		try {
 			ossClient.deleteObject(oss.getBucketName(), key);
 		} catch (Exception e) {
-			context.error("OSS删除出错,异常信息:{}", e);
+			throw e;
 		} finally {
 			if (ossClient != null) {
 				ossClient.shutdown();
@@ -179,7 +178,7 @@ public class OSSUtil {
 	/**
 	 * 上传文件到oss
 	 */
-	public static OssFile uploadFileToOss(Oss oss,byte[] file,String filePath,SpiderContext context){
+	public static OssFile uploadFileToOss(Oss oss,byte[] file,String filePath){
 		OssFile ossFile = new OssFile();
 		try {
 	        OSSUtil.uploadByInputStream(getOSSClient(oss), new ByteArrayInputStream(file), oss.getBucketName(), filePath);
@@ -190,9 +189,8 @@ public class OSSUtil {
 	        ossFile.setName(fps[fps.length-1]);
 	        return ossFile;
 		} catch (Exception e) {
-			context.error("OSS上传出错,异常信息:{}",e);
+			throw e;
 		}
-		return null;
 	}
 	
 }
