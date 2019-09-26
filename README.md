@@ -7,11 +7,11 @@ spider-flow OSS插件
 在 spider-flow-web pom.xml引用  
 
 ```
-**<dependency>
+<dependency>
  	<groupId>org.spiderflow</groupId>
  	<artifactId>spider-flow-oss</artifactId>
  	<version>0.0.1</version>
-</dependency>**
+</dependency>
 ```
 
 
