@@ -4,6 +4,7 @@
 spider-flow OSS插件
 
 #### 使用方法
+导入db文件夹sp_oss.sql文件到数据库  
 在 spider-flow-web pom.xml引用  
 
 ```
@@ -16,6 +17,7 @@ spider-flow OSS插件
 
 
 #### 使用操作
+ **例子在example文件夹**   
 上传（支持两种方式）：  
 ```
 ${resp.bytes.ossUpload('oss_id（配置的主键）','static/1.jpg')}  
