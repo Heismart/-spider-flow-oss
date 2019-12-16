@@ -11,7 +11,7 @@ spider-flow OSS插件
 <dependency>
  	<groupId>org.spiderflow</groupId>
  	<artifactId>spider-flow-oss</artifactId>
- 	<version>0.0.1</version>
+ 	<version>${spider-flow.version}</version>
 </dependency>
 ```
 
